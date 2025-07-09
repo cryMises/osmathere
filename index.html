@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<title>OSMAthere</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles/w3.css">
+<link rel="stylesheet" href="styles/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="paper font">
+  <header class="w3-display-container w3-content w3-center" style="max-width:1500px">
+    <div class="w3-bar brownbar w3-round w3-display-bottommiddle w3-hide-small" style="bottom:-16px;">
+      <a href="#instagram" class="w3-bar-item w3-button"><img src="image/osma.png"></a>
+      <a href="#school" class="w3-bar-item w3-button"></a>
+    </div>
+  </header>
+  <div class="w3-center brownbar w3-padding-16 w3-hide-large w3-hide-medium icon-bar">
+    <div class="w3-bar ">
+      <a href="#instagram" class="w3-bar-item w3-button"><img src="image/osma.png"></a>
+      <a href="#school" class="w3-bar-item w3-button"><img width="48px" height="48px"src="image/logo.png"></a>
+    </div>
+  </div>
+  <div class="w3-content w3-padding-large w3-margin-top">
+    <div class="overlaybox">
+      <h2>Coming Soon</h2>
+      <p>OSIS adalah wadah pengembangan diri dalam bidang kepemimpinan, kerja tim, dan pengabdian.</p>
+      <p>Jika kamu memiliki komitmen untuk berkontribusi dalam memajukan sekolah, inilah waktunya.</p>
+      <p>Nantikan informasi lengkapnya.</p>
+    </div>
+    
+    <div class="overlaybox" id="instagram">
+      <h2>Our Instagram</h2>
+      <p> 📢 Mau tahu kegiatan terbaru OSIS? Ikuti update seputar acara, pengumuman penting, dan momen seru lainnya langsung dari Instagram resmi OSIS!</p>
+      <p>📸 Follow kami di @osmathereone dan jangan ketinggalan info penting!</p>
+      <a href="https://www.instagram.com/osmathereone" target="_blank"class="brownbutton w3-button"><i class="fa fa-instagram"></i> Our Instagram</a>
+    </div>
+    <h2 style="text-align:center; color:#eee;">Welcome To OSMAthere</h2>
+    <img id="changing-image" src="image/img1.jpg" alt="Slideshow" style="max-width:100%; height:auto; border-radius:8px; margin-top:20px;">
+    
+    <div class="overlaybox" id="school">
+      <h2>Our School</h2>
+      <p>Informasi lengkap tentang profil, program pendidikan, dan kegiatan siswa. Pengunjung dapat mengakses berita terbaru, pengumuman penting, serta dokumentasi aktivitas sekolah.</p>
+      <a href="https://smatheresiana1.sch.id" target="_blank"class="brownbutton w3-button">Our School</a>
+    </div>
+    <script>
+    const images = [
+    "image/img1.jpg",
+    "image/img2.jpg",
+    "image/img3.jpg",
+    "image/img4.jpg",
+    "image/img5.jpg",
+    "image/img6.jpg",
+    ];
+    let index = 0;
+    const imageElement = document.getElementById("changing-image");
+    setInterval(() => {
+      index = (index + 1) % images.length;
+      imageElement.src = images[index];
+    }, 2000);
+    </script>
+</div>
+<footer class="footer brownbar">
+  <div class="footer-content">
+    <p>Jl. Mayjend Sutoyo No. 69<br>50134, Semarang.</p>
+    <p>Copyright © 2025 osmathere.com</p>    
+  </div>
+</footer>
+  
+</body>
+</html>
