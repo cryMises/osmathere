@@ -15,7 +15,7 @@
 <body class="paper font">
   <header class="w3-display-container w3-content w3-center" style="max-width:1500px">
     <div class="w3-bar brownbar w3-round w3-display-bottommiddle w3-hide-small" style="bottom:-16px;">
-      <div class="dropdown w3-button">
+      <div class="dropdown w3-bar-item w3-button">
         <button class="dropbtn" onclick="toggleDropdown(this)"><i class="fa-solid fa-bars"></i></button>
         <div class="dropdown-content" id="myDropdown">
           <a href="#">Home</a>
@@ -56,8 +56,9 @@
     </div>
     
     <h2 style="text-align:center; color:#eee;">Welcome To OSMAthere</h2>
+    <div class="slideshow-wrapper" id="slideshow-wrapper">
     <img id="changing-image" src="image/img1.jpg" alt="Slideshow" class="changingimage">
-    
+    </div>
     <div class="overlaybox" id="instagram">
       <h2>Our Instagram</h2>
       <p> 📢 Mau tahu kegiatan terbaru OSIS? Ikuti update seputar acara, pengumuman penting, dan momen seru lainnya langsung dari Instagram resmi OSIS!</p>
@@ -71,20 +72,67 @@
       <a href="https://smatheresiana1.sch.id" target="_blank"class="brownbutton w3-button">Our School</a>
     </div>
     <script>
-    const images = [
-    "image/img1.jpg",
-    "image/img2.jpg",
-    "image/img3.jpg",
-    "image/img4.jpg",
-    "image/img5.jpg",
-    "image/img6.jpg",
-    ];
-    let index = 0;
-    const imageElement = document.getElementById("changing-image");
-    setInterval(() => {
-      index = (index + 1) % images.length;
-      imageElement.src = images[index];
-    }, 2000);
+const images = [
+  "image/img1.jpg",
+  "image/img2.jpg",
+  "image/img3.jpg",
+  "image/img4.jpg",
+  "image/img5.jpg",
+  "image/img6.jpg",
+];
+
+let index = 0;
+
+const image1 = document.getElementById("changing-image");
+const container = document.getElementById("slideshow-wrapper");
+
+// Ensure container is properly styled (in case styles are not yet applied)
+container.style.position = "relative";
+container.style.overflow = "hidden";
+
+// Style image1
+image1.style.position = "absolute";
+image1.style.top = "0";
+image1.style.left = "0";
+image1.style.width = "100%";
+image1.style.height = "auto";
+image1.style.transition = "left 1s ease";
+
+// Create image2
+const image2 = document.createElement("img");
+image2.className = image1.className;
+image2.style.position = "absolute";
+image2.style.top = "0";
+image2.style.left = "100%";
+image2.style.width = "100%";
+image2.style.height = "auto";
+image2.style.transition = "left 1s ease";
+
+container.appendChild(image2);
+
+setInterval(() => {
+  index = (index + 1) % images.length;
+  image2.src = images[index];
+
+  // Slide both
+  image1.style.left = "-100%";
+  image2.style.left = "0";
+
+  setTimeout(() => {
+    // Reset image1
+    image1.src = images[index];
+    image1.style.transition = "none";
+    image1.style.left = "0";
+
+    image2.style.transition = "none";
+    image2.style.left = "100%";
+
+    // Re-enable transition
+    void image1.offsetWidth;
+    image1.style.transition = "left 1s ease";
+    image2.style.transition = "left 1s ease";
+  }, 1000);
+}, 4000);
     
     function toggleDropdown(button) {
     const dropdown = button.nextElementSibling;
