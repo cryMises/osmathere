@@ -105,7 +105,6 @@ h2 {
   font-size: 28px;
   height: 48px;
   width:64px;
-  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .dropdown {
@@ -115,7 +114,6 @@ h2 {
 }
 
 .dropdown-content {
-  display: none;
   position: absolute;
   background-color: #fff;
   min-width: 160px;
@@ -125,6 +123,10 @@ h2 {
   border-radius: 8px;
   top: 100%; /* position below the button */
   left: 0%;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
 }
 
 .dropdown-content a {
@@ -140,8 +142,22 @@ h2 {
 
 .show {
   display: block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .w3-bar{
   overflow: visible !important;
+}
+
+.slideshow-wrapper {
+  position: relative;
+  overflow: hidden;
+  max-width: 400px;
+  width: 95%;
+  margin: auto;
+  border-radius: 8px;
+  margin-top: 20px;
+  height: 250px;
 }
