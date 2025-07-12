@@ -56,8 +56,11 @@
     </div>
     
     <h2 style="text-align:center; color:#eee;">Welcome To OSMAthere</h2>
+    
     <div class="slideshow-wrapper" id="slideshow-wrapper">
-    <img id="changing-image" src="image/img1.jpg" alt="Slideshow" class="changingimage">
+      <button class="slide-btn left" onclick="changeSlide(-1)"><i class="fa-solid fa-arrow-left"></i></button>
+      <img id="changing-image" src="image/img1.jpg" alt="Slideshow" class="changingimage">
+      <button class="slide-btn right" onclick="changeSlide(1)"><i class="fa-solid fa-arrow-right"></i></button>
     </div>
     
     <div class="overlaybox" id="instagram">
@@ -83,23 +86,19 @@ const images = [
 ];
 
 let index = 0;
+let autoSlideInterval;
 
 const image1 = document.getElementById("changing-image");
 const container = document.getElementById("slideshow-wrapper");
 
-// Ensure container is properly styled (in case styles are not yet applied)
-container.style.position = "relative";
-container.style.overflow = "hidden";
-
-// Style image1
 image1.style.position = "absolute";
 image1.style.top = "0";
 image1.style.left = "0";
 image1.style.width = "100%";
 image1.style.height = "auto";
-image1.style.transition = "left 1s ease";
+image1.style.transition = "left 1s ease, opacity 1s ease";
+image1.style.opacity = "1";
 
-// Create image2
 const image2 = document.createElement("img");
 image2.className = image1.className;
 image2.style.position = "absolute";
@@ -107,33 +106,52 @@ image2.style.top = "0";
 image2.style.left = "100%";
 image2.style.width = "100%";
 image2.style.height = "auto";
-image2.style.transition = "left 1s ease";
+image2.style.transition = "left 1s ease, opacity 1s ease";
+image2.style.opacity = "1";
 
 container.appendChild(image2);
 
-setInterval(() => {
-  index = (index + 1) % images.length;
-  image2.src = images[index];
+function startAutoSlide() {
+  clearInterval(autoSlideInterval);
+  autoSlideInterval = setInterval(() => {
+    index = (index + 1) % images.length;
+    image2.src = images[index];
 
-  // Slide both
-  image1.style.left = "-100%";
-  image2.style.left = "0";
+    image1.style.left = "-100%";
+    image2.style.left = "0";
+    image2.style.opacity = "1";
+
+    setTimeout(() => {
+      image1.src = images[index];
+      image1.style.transition = "none";
+      image1.style.left = "0";
+
+      image2.style.transition = "none";
+      image2.style.left = "100%";
+
+      void image1.offsetWidth;
+      image1.style.transition = "left 1s ease, opacity 1s ease";
+      image2.style.transition = "left 1s ease, opacity 1s ease";
+    }, 1000);
+  }, 4000);
+}
+
+function changeSlide(direction) {
+  index = (index + direction + images.length) % images.length;
+  clearInterval(autoSlideInterval);
+
+  image1.style.transition = "opacity 1s ease";
+  image1.style.opacity = "0";
 
   setTimeout(() => {
-    // Reset image1
     image1.src = images[index];
-    image1.style.transition = "none";
-    image1.style.left = "0";
+    image1.style.opacity = "1";
+    image1.style.transition = "left 1s ease, opacity 1s ease";    
+  }, 700);
+  startAutoSlide();
+}
 
-    image2.style.transition = "none";
-    image2.style.left = "100%";
-
-    // Re-enable transition
-    void image1.offsetWidth;
-    image1.style.transition = "left 1s ease";
-    image2.style.transition = "left 1s ease";
-  }, 1000);
-}, 4000);
+startAutoSlide();
     
     function toggleDropdown(button) {
     const dropdown = button.nextElementSibling;
