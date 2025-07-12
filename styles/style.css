@@ -91,7 +91,8 @@ h2 {
   width:95%;
   height:auto;
   border-radius:8px;
-  margin-top:20px;"
+  margin-top:20px;
+  transition: left 1s ease,opacity 1s ease;
 }
 
 .dropbtn {
@@ -160,4 +161,36 @@ h2 {
   border-radius: 8px;
   margin-top: 20px;
   height: 250px;
+}
+
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.3);
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  transition: all 1s
+}
+
+.slide-btn.left {
+  left: 10px;
+}
+
+.slide-btn.right {
+  right: 10px;
+}
+
+.slide-btn:hover {
+  background-color: rgba(0,0,0,0.8);
 }
