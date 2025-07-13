@@ -77,128 +77,14 @@
       <p>Informasi lengkap tentang profil, program pendidikan, dan kegiatan siswa. Pengunjung dapat mengakses berita terbaru, pengumuman penting, serta dokumentasi aktivitas sekolah.</p>
       <a href="https://smatheresiana1.sch.id" target="_blank" class="brownbutton w3-button">Our School</a>
     </div>
-    
-    <script>
-      const images = [
-        "image/img1.jpg",
-        "image/img2.jpg",
-        "image/img3.jpg",
-        "image/img4.jpg",
-        "image/img5.jpg",
-        "image/img6.jpg",
-      ];
-      
-      let index = 0;
-      let autoSlideInterval;
-      
-      const image1 = document.getElementById("changing-image");
-      const container = document.getElementById("slideshow-wrapper");
-      
-      image1.style.position = "absolute";
-      image1.style.top = "0";
-      image1.style.left = "0";
-      image1.style.width = "100%";
-      image1.style.height = "auto";
-      image1.style.transition = "left 1s ease, opacity 1s ease";
-      image1.style.opacity = "1";
-      
-      const image2 = document.createElement("img");
-      image2.className = image1.className;
-      image2.style.position = "absolute";
-      image2.style.top = "0";
-      image2.style.left = "100%";
-      image2.style.width = "100%";
-      image2.style.height = "auto";
-      image2.style.transition = "left 1s ease, opacity 1s ease";
-      image2.style.opacity = "1";
-      
-      container.appendChild(image2);
-      
-      function startAutoSlide() {
-        clearInterval(autoSlideInterval);
-        autoSlideInterval = setInterval(() => {
-          index = (index + 1) % images.length;
-          image2.src = images[index];
-      
-          image1.style.left = "-100%";
-          image2.style.left = "0";
-          image2.style.opacity = "1";
-      
-          setTimeout(() => {
-            image1.src = images[index];
-            image1.style.transition = "none";
-            image1.style.left = "0";
-      
-            image2.style.transition = "none";
-            image2.style.left = "100%";
-      
-            void image1.offsetWidth;
-            image1.style.transition = "left 1s ease, opacity 1s ease";
-            image2.style.transition = "left 1s ease, opacity 1s ease";
-          }, 1000);
-        }, 4000);
-      }
-      
-      function changeSlide(direction) {
-        index = (index + direction + images.length) % images.length;
-        clearInterval(autoSlideInterval);
-      
-        image1.style.transition = "opacity 1s ease";
-        image1.style.opacity = "0";
-      
-        setTimeout(() => {
-          image1.src = images[index];
-          image1.style.opacity = "1";
-          image1.style.transition = "left 1s ease, opacity 1s ease";    
-        }, 700);
-        startAutoSlide();
-      }
-      
-      startAutoSlide();
-          
-          function toggleDropdown(button) {
-          const dropdown = button.nextElementSibling;
-          const icon = button.querySelector('i');
-      
-          const isOpen = dropdown.classList.toggle("show");
-      
-          if (isOpen) {
-            // Opened: show staggered and black icon
-            icon.classList.remove("fa-bars");
-            icon.classList.add("fa-bars-staggered");
-            icon.style.color = "black";
-          } else {
-            // Closed: revert to bars and white icon
-            icon.classList.remove("fa-bars-staggered");
-            icon.classList.add("fa-bars");
-            icon.style.color = "white";
-          }
-        }
-      
-        // Close dropdown when clicking outside
-        window.onclick = function (e) {
-          const dropdown = document.getElementById("myDropdown");
-          const button = document.querySelector(".dropbtn");
-          const icon = button.querySelector("i");
-      
-          if (!e.target.closest(".dropdown")) {
-            dropdown.classList.remove("show");
-      
-            // Reset icon and color
-            icon.classList.remove("fa-bars-staggered");
-            icon.classList.add("fa-bars");
-            icon.style.color = "white";
-          }
-        };
-    </script>
   </div>
   <footer class="footer brownbar">
     <div class="footer-content">
       <p>Jl. Mayjend Sutoyo No. 69<br>50134, Semarang.</p>
-      <p>Copyright © 2025 osmathere.com</p>
+      <p>Copyright © 2025 osmathere.vercel.app</p>
     </div>
   </footer>
-
+  <script src="script/script.js"></script>
 </body>
 
 </html>
