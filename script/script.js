@@ -64,9 +64,10 @@ const images = [
       
         image1.style.transition = "opacity 1s ease";
         image1.style.opacity = "0";
+        image2.src = images[index];
       
         setTimeout(() => {
-          image1.src = images[index];
+          image1.src = image2.src;
           image1.style.opacity = "1";
           image1.style.transition = "left 1s ease, opacity 1s ease";    
         }, 700);
