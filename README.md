@@ -31,6 +31,3 @@ SMA Theresiana 1 Semarang merupakan sekolah swasta Katolik yang berakreditasi�
 Terbuka untuk kontribusi, masukan, atau permintaan fitur tambahan.
 
 ---
-
-## 📜 Lisensi
-
