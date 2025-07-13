@@ -111,3 +111,22 @@ const images = [
           }
         };
 
+document.addEventListener("DOMContentLoaded", function () {
+  const observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.25
+    }
+  );
+
+  document.querySelectorAll(".scroll-slide, .scroll-fade, .scroll-zoom").forEach(el => {
+    observer.observe(el);
+  });
+});
